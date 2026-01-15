@@ -27,12 +27,12 @@ Enter Number1:
 
 Secondly, It asks for you an oprator what do you want to do with those numbers please selct an oprator.(The oprator menu will be displayed) Like Below:
 ```text
-**Enter Operator:**
+Enter Operator: 
 ```
 At last, It will asks you for the 2nd number. Like below:
-
-**Enter Number2:**
-
+```
+Enter Number2: 
+```
 At last it will Show you whatever opration will be performed and what will be the Result.
 
 Feel Free to try it Once how it works :-)
