@@ -26,9 +26,9 @@ Enter Number1:
 ```
 
 Secondly, It asks for you an oprator what do you want to do with those numbers please selct an oprator.(The oprator menu will be displayed) Like Below:
-
+```text
 **Enter Operator:**
-
+```
 At last, It will asks you for the 2nd number. Like below:
 
 **Enter Number2:**
