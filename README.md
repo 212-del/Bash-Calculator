@@ -22,7 +22,8 @@ The calculator operates in a step-by-step manner:
 You will first be prompted to enter the initial number:
 ```text
 Enter Number1: 
-text```
+
+```
 
 Secondly, It asks for you an oprator what do you want to do with those numbers please selct an oprator.(The oprator menu will be displayed) Like Below:
 
