@@ -32,7 +32,22 @@ case ${Choice1} in
   fi
  ;;
  6)
-  echo "Testing"
+   if [[ $number3 -gt $number4 ]]; then
+   larger_num=$number3
+   smaller_num=$number4
+  elif [[ $number3 == $number4 ]]; then
+   echo "GCD=$number3"
+  else
+    larger_num=$number4
+    smaller_num=$number3
+  fi
+  limit=$((smaller_num / 2))
+  for i in $(seq 1 "$limit")
+  do
+    echo -n "$(echo "scale=3; $number3 / $i" | bc | awk '{print $1, $2}' | grep  ".000")"
+    echo -n "" "$(echo "scale=3; $number4 / $i" | bc | awk '{print $1, $2}' | grep  ".000")"
+    echo "" "Both number divided by $i"
+  done
  ;;
  7)
   exit
