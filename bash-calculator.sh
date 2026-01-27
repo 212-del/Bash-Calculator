@@ -32,24 +32,27 @@ case ${Choice1} in
   fi
  ;;
  6)
-   if [[ $number3 -gt $number4 ]]; then
-   larger_num=$number3
-   smaller_num=$number4
-  elif [[ $number3 == $number4 ]]; then
-   echo "GCD=$number3"
-  else
-    larger_num=$number4
-    smaller_num=$number3
-  fi
-  limit=$((smaller_num / 2))
-  for i in $(seq 1 "$limit")
-  do
-    echo -n "$(echo "scale=3; $number3 / $i" | bc | awk '{print $1, $2}' | grep  ".000")"
-    echo -n "" "$(echo "scale=3; $number4 / $i" | bc | awk '{print $1, $2}' | grep  ".000")"
-    echo "" "Both number divided by $i"
-  done
+   if [[ "$number3" -gt "$number4" ]]; then
+    greater_number=$number3
+    smaller_number=$number4
+   elif [[ "$number3" == "$number4"  ]]; then
+    echo "HCF is ${number3}"
+   else
+    greater_number=$number4
+    smaller_number=$number3
+   fi
+   for i in $(seq 1 "$smaller_number"); do
+    temp=$(
+    echo -n $(echo "scale=3; $number3 / $i" | bc) 
+    echo -n "" $(echo "scale=3; $number4 / $i" | bc)
+    echo "" "Divided by $i"
+    )
+    echo "$temp" | grep -E '(\.000.*\.000)'
+   done | echo "HCF= "$(sed -n '$s/.*\([0-9]\+\)$/\1/p')
  ;;
  7)
   exit
  ;;
+ *)
+  echo "Kindly choose the correct choice"
 esac
