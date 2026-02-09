@@ -25,7 +25,7 @@ case ${Choice1} in
  5)
   if [[ $number3 -le 3037000499 ]]; then
     if [[ $number4 -ge 2 ]]; then
-    elif [[ $number4 = "1" ]]; then
+    elif [[ $number4 == "1" ]]; then
         echo "$number3"
         echo "${number3}^${number4} = "$((number3 ** number4))
     else
