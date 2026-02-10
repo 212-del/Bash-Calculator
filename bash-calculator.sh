@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo apt install bc || pkg install bc
 echo -e  "\e[36;1;40m A Menu Based Calculator. \e[0m"
-echo -e "\e[36;1;40m Below  operatation can be performed using operators.\n{1} Add\n{2} Subtract\n{3} Multiply\n{4} Division\n{5} Exponentiation(Number1 ≤ 3037000499 & Number2 ≥ 2)\n{6} GCD\n{7} ᵏ√n(ᵏ = number2)<Limit =10k>\n{8} Exit. \e[0m"
+echo -e "\e[36;1;40m Below  operatation can be performed using operators.\n{1} Add\n{2} Subtract\n{3} Multiply\n{4} Division\n{5} Exponentiation(Number1 ≤ 3037000499 & Number2 ≥ 2)\n{6} GCD\n{7} ᵏ√n(ᵏ = number2)<Accuracy = till decimal 3 places>\n{8} Exit. \e[0m"
 until [[ $number1 =~ ^-?[0-9]+$ ]]; do
  read -r -p "   Enter Number1: " number1
 done
@@ -61,28 +61,27 @@ case ${Choice1} in
   while [[ "${old_threshold}" != "${new_threshold}" ]]; do
    if [[ $number2 -ge "2" ]]; then
     first_sum(){
-     echo "($number2 -1) * $assume" | bc
+     echo "($number2 - 1) * $assume" | bc
 }
     second_sum(){
-     echo " scale=3; $number1 / $assume^($number2 -1)" | bc
+     echo " scale=3; $number1 / $assume^($number2 - 1)" | bc
 }
     assume=$(echo "scale=3; ($(first_sum) + $(second_sum)) / $number2" | bc)
-    echo -n "$assume "
     old_threshold="$assume"
      first_sum(){
-     echo " scale=3; $($number2 -1) * $assume" | bc
+      echo " scale=3; ($number2 - 1) * $assume" | bc
 }
      second_sum(){ 
-      echo "$number1 / $assume^($number2 -1)" | bc
+      echo " scale=3; $number1 / $assume ^ $(($number2 - 1))" | bc
  }
     assume=$(echo "scale=3; ($(first_sum) + $(second_sum)) / $number2" | bc)
-    new_threshold="$assume"
-    echo $(first_sum) 
+    new_threshold="$assume" 
+    echo "$new_threshold" 
   else
     echo "Number2 > 2"
    fi
-  sleep 1
-  done
+  sleep .1
+  done |  printf "%s" "$(tail -n 1)"; echo -n " is the ${number2}th root of ${number1}"
  ;;
  8)
   exit
