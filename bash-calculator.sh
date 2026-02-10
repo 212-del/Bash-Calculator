@@ -55,17 +55,18 @@ case ${Choice1} in
    done | echo "HCF= "$(sed -n '$s/.*\([0-9]\+\)$/\1/p')
  ;;
  7)
-  assume_num=""
-  while [[ $(echo "$old_threshold != $new_threshold" | bc) -eq 1 ]]; do
+  old_threshold="1"
+  new_threshold=""
+  while [[ "${old_threshold}" != "${new_threshold}" ]]; do
    if [[ $number2 -ge "2" ]]; then
-    assume="" 
+    assume="2" 
     first_sum(){
      echo "($number2 -1) * $assume" | bc
 }
     second_sum(){
-     echo "$number1 / $assume^($number2 -1)" | bc
+     echo " scale=3; $number1 / $assume^($number2 -1)" | bc
 }
-    assume=$(echo "scale=3; $(first_sum) + $(second_sum) / $number2" | bc)
+    assume=$(echo "scale=3; ($(first_sum) + $(second_sum)) / $number2" | bc)
     old_threshold="$assume"
      first_sum(){
      echo "($number2 -1) * $assume" | bc
@@ -75,7 +76,8 @@ case ${Choice1} in
  }
     assume=$(echo "scale=3; $(first_sum) + $(second_sum) / $number2" | bc)
     new_threshold="$assume"
-   else
+    echo "$assume" 
+  else
     echo "Number2 > 2"
    fi
   sleep 1
