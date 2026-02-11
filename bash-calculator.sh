@@ -64,7 +64,7 @@ case ${Choice1} in
       greater_number=$number2
       smaller_number=$number1
    fi
-   hcf=$(
+     hcff=$(
      for i in $(seq 1 "$smaller_number"); do
       temp=$(
       echo -n $(echo "scale=3; $number1 / $i" | bc) 
@@ -72,9 +72,9 @@ case ${Choice1} in
       echo  " Divided by $i"
       )
       echo "$temp" | grep -E '(\.000.*\.000)'
-     done | $(sed -n '$s/.*\([0-9]\+\)$/\1/p')
-   )
-   echo "${hcf}"
+     done | sed -n '$s/.*\([0-9]\+\)$/\1/p')
+     product_lcm=$(( number1 * number2 ))
+     echo "LCM = " $(( product_lcm / hcff))
  ;;
  8)
   old_threshold="1"
@@ -99,7 +99,7 @@ case ${Choice1} in
     assume=$(echo "scale=3; ($(first_sum) + $(second_sum)) / $number2" | bc)
     new_threshold="$assume" 
     echo "$new_threshold" 
-  else
+   else
     echo "Number2 > 2"
    fi
   sleep .1
