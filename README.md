@@ -53,9 +53,16 @@ nCr
 Factorial
 
 Log10
+
 sin()
+
 cos()
+
 tan()
+
 cosec()
+
 sec()
+
 cot()
+
