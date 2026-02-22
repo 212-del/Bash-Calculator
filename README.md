@@ -42,7 +42,7 @@ Feel Free to try it Once how it works :-)
 
 
 ## 🆕 Future New Feature
-simple interest calculator
+add a section that constantly prompts user input.
 
 LCM
 
