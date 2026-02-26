@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo apt install bc || pkg install bc
 echo -e  "\e[36;1;40m A Menu Based Calculator. \e[0m"
-echo -e "\e[36;1;40m Below  operatation can be performed using operators.\n{1} Add\n{2} Subtract\n{3} Multiply\n{4} Division\n{5} Exponentiation(Number1 ≤ 3037000499 & Number2 ≥ 2)\n{6} GCD\n{7} LCM\n{8} ᵏ√n(ᵏ = number2)<Accuracy = till decimal 3 places>\n{9} Ratio\n{10} nPr<n=Number1, r=Number2>\n{11} nCr\n{12} Average\n{13} Area of Triangle\n{14} Hypotenuse\n{15} Simple Interest<time=1>\n{16} Geometric Mean\n{17} Harmonic Mean\n{18} Modulus\n{19} RMS (Root Mean Square)\n{20} Contraharmonic Mean\n{21} Exit. \e[0m"
+echo -e "\e[36;1;40m Below  operatation can be performed using operators.\n{1} Add\n{2} Subtract\n{3} Multiply\n{4} Division\n{5} Exponentiation(Number1 ≤ 3037000499 & Number2 ≥ 2)\n{6} GCD\n{7} LCM\n{8} ᵏ√n(ᵏ = number2)<Accuracy = till decimal 3 places>\n{9} Ratio\n{10} nPr<n=Number1, r=Number2>\n{11} nCr\n{12} Average\n{13} Area of Triangle\n{14} Hypotenuse\n{15} Simple Interest<time=1>\n{16} Geometric Mean\n{17} Harmonic Mean\n{18} Modulus\n{19} RMS (Root Mean Square)\n{20} Contraharmonic Mean\n{21} Base64 encoder/decoder<Number 1 : 1 for encode, 2 for decode>\n{21} Exit. \e[0m"
 until [[ $number1 =~ ^-?[0-9]+$ ]]; do
  read -r -p "   Enter Number1: " number1
 done
@@ -218,6 +218,15 @@ case ${Choice1} in
   echo "scale=3; $ki / $kj" | bc
  ;;
  21)
+  if [[ "$number1" == "1" ]]; then
+    echo -n "Enter Text to encode : "
+    echo  "$number2" | base64
+  else
+    echo -n "Enter Text to Decode : "
+    echo "$number2" | base64 -d
+  fi
+ ;;
+ 22)
   exit
  ;;
  *)
